@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth hover:scroll-auto">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 font-sans">
+    <div class="flex justify-between items-center bg-blue-500 p-4">
+        <h1 class="text-white text-2xl">Admin Dashboard</h1>
+        <button class="bg-red-500 text-white px-4 py-2 rounded" onclick="logout()">Logout</button>
+    </div>
+    
+    <div class="container mx-auto mt-8">
+        <div class="flex justify-between mb-4">
+            <h2 class="text-lg font-semibold">Total Posts: <span id="postCount">0</span></h2>
+            <button class="bg-green-500 text-white px-4 py-2 rounded" onclick="openAddPopup()">Add Article</button>
+        </div>
+        
+        <ul id="articleList" class="grid grid-cols-1 gap-4"></ul>
+    </div>
+    
+    <!-- Add Article Popup -->
+    <div id="addPopup" class="fixed inset-0 flex justify-center items-center bg-black bg-opacity-50 hidden">
+        <div class="py-20 h-screen bg-gray-300 px-2">
+            <div class="max-w-md mx-auto bg-white rounded-lg overflow-hidden md:max-w-lg">
+                <div class="md:flex">
+                    <div class="w-full px-4 py-6 ">
+
+                       <div class="mb-1">
+                        <span class="text-sm">Full name</span>
+                        <input type="text" class="h-12 px-3 w-full border-blue-400 border-2 rounded focus:outline-none focus:border-blue-600">
+                       </div>
+
+                       <div class="mb-1">
+                        <span class="text-sm">Description</span>
+                        <textarea type="text" class="h-24 py-1 px-3 w-full border-2 border-blue-400 rounded focus:outline-none focus:border-blue-600 resize-none"></textarea>
+                       </div>
+
+                       <div class="mb-1">
+                         <span class="text-sm text-gray-400">You will be able to edit this information later</span>
+                       </div>
+
+                       <div class="mb-1">
+
+                        <span>Attachments</span>
+
+                        <div class="relative border-dotted h-32 rounded-lg border-dashed border-2 border-blue-700 bg-gray-100 flex justify-center items-center">
+                          <div class="absolute">
+                              <div class="flex flex-col items-center"> <i class="fa fa-folder-open fa-3x text-blue-700"></i> <span class="block text-gray-400 font-normal">Attach you files here</span> </div>
+                          </div> <input type="file" class="h-full w-full opacity-0" name="">
+                      </div>
+                         
+                       </div>
+
+                       <div class="mt-3 text-right">
+
+                        <a href="#">Cancel</a>
+                        <button class="ml-2 h-10 w-32 bg-blue-600 rounded text-white hover:bg-blue-700">Create</button>
+                         
+                       </div>
+                       
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        const postCountElement = document.getElementById('postCount');
+        const articleListElement = document.getElementById('articleList');
+        const addPopup = document.getElementById('addPopup');
+        
+        // Simulated data for articles
+        const articles = [
+            { id: 1, title: 'Article 1', content: 'Content for Article 1' },
+            { id: 2, title: 'Article 2', content: 'Content for Article 2' },
+            { id: 3, title: 'Article 3', content: 'Content for Article 3' }
+        ];
+        
+        // Simulated login status and post count
+        const isLoggedIn = true;
+        const totalPosts = articles.length;
+        
+        // Display post count
+        postCountElement.textContent = totalPosts;
+        
+        // Display articles
+        articles.forEach(article => {
+            const articleItem = document.createElement('li');
+            articleItem.className = 'bg-white p-4 rounded shadow-md';
+            articleItem.innerHTML = `
+                <h3 class="text-lg font-semibold mb-2">${article.title}</h3>
+                <p>${article.content}</p>
+                <div class="mt-2 flex justify-end">
+                    <button class="bg-blue-500 text-white px-2 py-1 rounded mr-2">Edit</button>
+                    <button class="bg-red-500 text-white px-2 py-1 rounded">Delete</button>
+                </div>
+            `;
+            articleListElement.appendChild(articleItem);
+        });
+        
+        // Logout function
+        function logout() {
+            // Implement your logout logic here
+        }
+        
+        // Show add popup
+        function openAddPopup() {
+            addPopup.classList.remove('hidden');
+        }
+        
+        // Hide add popup
+        function closeAddPopup() {
+            addPopup.classList.add('hidden');
+        }
+        
+        // Submit new article
+        const addArticleForm = document.getElementById('addArticleForm');
+        addArticleForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const title = event.target.elements[0].value;
+            const content = event.target.elements[1].value;
+            
+            // Implement your logic to add the new article here
+            
+            // Simulate adding article to the list
+            const newArticle = { id: articles.length + 1, title, content };
+            articles.push(newArticle);
+            totalPosts++;
+            postCountElement.textContent = totalPosts;
+            
+            // Close the popup
+            closeAddPopup();
+            
+            // Clear the form fields
+            event.target.reset();
+        });
+    </script>
+</body>
+</html>
