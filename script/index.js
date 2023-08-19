@@ -6,6 +6,11 @@ document.addEventListener("DOMContentLoaded", function () {
     .catch((error) => console.error("Error fetching data:", error));
 });
 
+function limitText(text){
+  result = text.length > 200 ? text.substring(0, 200) + " ..." : text;
+  return result;
+}
+
 function displayCard(data_news) {
   const cardId = document.getElementById("cardNews");
 
@@ -35,7 +40,8 @@ function displayCard(data_news) {
 
     const contentNews = document.createElement("p");
     contentNews.classList.add("text-gray-600", "mb-4");
-    contentNews.textContent = data_news[i].news_content;
+    newText = limitText(data_news[i].news_content)
+    contentNews.textContent = newText;
 
     const datetNews = document.createElement("p");
     datetNews.classList.add("text-sm", "text-gray-500");
