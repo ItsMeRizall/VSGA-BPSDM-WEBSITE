@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
 function displayCard(data_news) {
   const cardId = document.getElementById("cardNews");
 
-  for (let i = 0; i < 5; i++) {
+  for (let i = 0; i < 6; i++) {
     const card = document.createElement("div");
     card.classList.add(
       "max-w-md",
@@ -27,11 +27,11 @@ function displayCard(data_news) {
 
     const imageCard = document.createElement("img");
     imageCard.classList.add("mb-4");
-    imageCard.src = "./assets/images/gambar_kegiatan1.jpg";
+    imageCard.src = "./images/" + data_news[i].images;
 
     const titleNews = document.createElement("h2");
     titleNews.classList.add("text-xl", "font-semibold", "mb-2");
-    titleNews.textContent = data_news[i].news_tittle;
+    titleNews.textContent = data_news[i].news_title;
 
     const contentNews = document.createElement("p");
     contentNews.classList.add("text-gray-600", "mb-4");
@@ -46,7 +46,8 @@ function displayCard(data_news) {
       "text-blue-500",
       "hover:underline",
       "mt-2",
-      "inline-block"
+      "inline-block",
+      "cursor-pointer"
     );
     readAll.textContent = "Lihat Selengkpnya";
 

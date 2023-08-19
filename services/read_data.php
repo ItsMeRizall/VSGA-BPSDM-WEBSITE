@@ -2,9 +2,9 @@
 if ($_SERVER["REQUEST_METHOD"] === "GET") {
     require_once "koneksi.php";  // Include the DBHelper class
 
-    $dbHelper = new DBHelper("localhost", "root", "", "114_moch_syaiful_rizal");
+    $dbHelper = new DBHelper("localhost", "root", "", "123_syahmi");
 
-    $data = $dbHelper->getData("news", "news_id, news_title, news_content, news_kategory, news_update", "");  // Modify as needed
+    $data = $dbHelper->getData("news", "*", "", "news_update DESC");  // Modify as needed
 
     header('Content-Type: application/json');
     // $data = array_map('utf8_encode', $data);

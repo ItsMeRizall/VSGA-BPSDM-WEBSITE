@@ -58,10 +58,14 @@ class DBHelper {
         }
     }
 
-    public function getData($table, $columns = "*", $where = "") {
+    public function getData($table, $columns = "*", $where = "", $orderBy = "") {
         $sql = "SELECT $columns FROM $table";
         if (!empty($where)) {
             $sql .= " WHERE $where";
+        }
+
+        if (!empty($orderBy)) {
+            $sql .= " ORDER BY $orderBy";
         }
     
         $result = $this->conn->query($sql);

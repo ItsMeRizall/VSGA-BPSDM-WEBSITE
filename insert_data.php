@@ -1,7 +1,7 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     require_once './services/koneksi.php'; // Sertakan file koneksi ke database
-    $dbHelper = new DBHelper("localhost", "root", "", "114_moch_syaiful_rizal");
+    $dbHelper = new DBHelper("localhost", "root", "", "123_syahmi");
 
 
     $title = $_POST["title"];
@@ -25,7 +25,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $insertResult = $dbHelper->insertData("news", $data);
     if ($insertResult) {
-        echo "<p>Berhasil</p>;";
+        header("Location: ./admin/admin.php");
+        exit();
     } else {
         echo "<p>Tidak Berhasil</p>;";
     }

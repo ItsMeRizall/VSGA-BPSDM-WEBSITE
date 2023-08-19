@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Lakukan validasi
         if (username === 'admin' && password === 'bpsdmp') {
-            window.location.href = 'admin.html'; // Redirect ke halaman admin jika login berhasil
+            window.location.href = './admin/admin.php'; // Redirect ke halaman admin jika login berhasil
         } else {
             const errorText = document.createElement('p');
             errorText.textContent = 'Username or password is incorrect.';
