@@ -4,6 +4,35 @@
     font-family: 'Poppins', sans-serif;
 }
 
+.flex-1 a:hover{
+  background-color: transparent;
+  color: blue;
+}
+
+body {
+  background-color: whitesmoke;
+}
+
+.konten {
+  margin:auto;
+  width: 950px;
+  background-color: white;
+  border: solid 1.5px darkgrey;
+}
+
+.container{
+  margin: auto;
+  width: 880px;
+  /* margin-left: 0px; */
+}
+
+.block{
+  /* height: ; */
+  width: 825px;
+  margin: auto;
+}
+
+
 .card{
     transition: transform 0.2s;
   }
