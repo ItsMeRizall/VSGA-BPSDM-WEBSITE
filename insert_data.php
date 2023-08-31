@@ -1,7 +1,7 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     require_once './services/koneksi.php'; // Sertakan file koneksi ke database
-    $dbHelper = new DBHelper("localhost", "root", "", "123_syahmi");
+    $dbHelper = new DBHelper("localhost", "admin", "", "123_syahmi");
 
 
     $title = $_POST["title"];

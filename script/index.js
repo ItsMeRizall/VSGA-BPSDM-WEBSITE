@@ -17,7 +17,10 @@ function displayCard(data_news) {
   for (let i = 0; i < 6; i++) {
     const card = document.createElement("div");
     card.classList.add(
-      "max-w-md",
+      "w-full",
+      "h-full",
+      // "max-w-md",
+      // "max-h-md",
       "mx-auto",
       "bg-white",
       "shadow-md",
@@ -31,8 +34,9 @@ function displayCard(data_news) {
     );
 
     const imageCard = document.createElement("img");
-    imageCard.classList.add("mb-4");
+    imageCard.classList.add("mb-4", "w-full", "h-64");
     imageCard.src = "./images/" + data_news[i].images;
+    imageCard.style.objectFit = "cover";
 
     const titleNews = document.createElement("h2");
     titleNews.classList.add("text-xl", "font-semibold", "mb-2");
