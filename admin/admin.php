@@ -52,7 +52,7 @@
         <?php
         include '../services/koneksi.php';
 
-        $dbHelper = new DBHelper("localhost", "root", "", "123_syahmi");
+        $dbHelper = new DBHelper("localhost", "admin", "y", "123_syahmi");
 
         $query = "SELECT * FROM news ORDER BY news_update DESC";
         $result = $dbHelper->getConnection()->query($query);
