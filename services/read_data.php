@@ -4,17 +4,10 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
 
     $dbHelper = new DBHelper("localhost", "root", "", "123_syahmi");
 
-    $data = $dbHelper->getData("news", "*", "", "news_update DESC");  // Modify as needed
-
+    $data = $dbHelper->getData("news", "*", "", "news_update DESC");
     header('Content-Type: application/json');
-    // $data = array_map('utf8_encode', $data);
-    echo json_encode($data);
 
-    // if ($data_json !== false) {
-    //     echo "JSON encoding successful.";
-    // } else {
-    //     echo "JSON encoding failed with error code: " . json_last_error();
-    // }
+    echo json_encode($data);
 
     $dbHelper->closeConnection();
 }

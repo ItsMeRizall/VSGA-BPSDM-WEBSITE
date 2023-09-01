@@ -73,7 +73,7 @@ class DBHelper {
     
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
-                $data[] = $row; // Tambahkan array asosiatif ke dalam array $data
+                $data[] = $row; 
             }
         }
     

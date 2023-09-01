@@ -52,13 +52,12 @@
         <?php
         include '../services/koneksi.php';
 
-        $dbHelper = new DBHelper("localhost", "admin", "y", "123_syahmi");
+        $dbHelper = new DBHelper("localhost", "root", "", "123_syahmi");
+        
+        $result = $dbHelper->getData("news", "*", "", "news_update DESC");
 
-        $query = "SELECT * FROM news ORDER BY news_update DESC";
-        $result = $dbHelper->getConnection()->query($query);
-
-        if ($result->num_rows > 0) {
-            while ($data = $result->fetch_assoc()) {
+        if (!empty($result)) {
+            foreach ($result as $data) {
                 echo '<div class="container mx-auto mt-8">';
                 echo '<ul class="grid grid-cols-1 gap-4">';
                 // <!-- Item 1 -->
@@ -73,14 +72,14 @@
                 echo ' <div class="text-sm">';
                 // Inside the loop
                 echo '<a href="../services/edit_data.php?id=' . $data['news_id'] . '" class="font-semibold mx-5 text-indigo-600 hover:text-indigo-500">Edit</a>';
-
-                echo '<a href="javascript:void(0);" onclick="deleteNews(' . $data['news_id'] . ')" class="font-semibold mx-5 text-indigo-600 hover:text-indigo-500">Delete</a>';
+        
+                echo '<a href="../services/delete_data.php?id=' . $data['news_id'] . '" class="font-semibold mx-5 text-indigo-600 hover:text-indigo-500">Delete</a>';
                 echo '</div>';
                 echo '</li>';
                 // <!-- Add more items here -->
                 echo '</ul>';
                 echo '</div>';
-            }
+            }        
         } else {
             echo 'echo <tr><td colspan="4" class="text-center">Tidak ada kegiatan.</td></tr>';
         }
@@ -103,8 +102,14 @@
 
                         <div class="mb-1">
                             <span class="text-sm">Categories</span>
-                            <input type="text" name="categories" required
+                            <label for="categories" class="text-sm">Categories</label>
+                            <select required name="categories" id="categories"
                                 class="h-12 px-3 w-full border-blue-400 border-2 rounded focus:outline-none focus:border-blue-600">
+                                <option value="sport">Sport</option>
+                                <option value="politics">Politics</option>
+                                <option value="entertainment">Entertainment</option>
+                                <option value="business">Business</option>
+                            </select>
                         </div>
 
                         <div class="mb-1">
@@ -141,28 +146,15 @@
     </div>
 
     <!-- admin.php -->
-<!-- ... your previous code ... -->
+    <!-- ... your previous code ... -->
 
-<script>
-function deleteNews(id) {
-    if (confirm('Are you sure you want to delete this item?')) {
-        fetch(`../services/delete_data.php?id=${id}`)
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    // Update UI if delete is successful
-                    const listItem = document.getElementById(`news-${id}`);
-                    listItem.remove();
-                } else {
-                    alert('Failed to delete.');
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
-    }
-}
-</script>
+    <script>
+        function deleteNews(id) {
+            if (confirm('Are you sure you want to delete this item?')) {
+                
+            }
+        }
+    </script>
 
 
 </body>
