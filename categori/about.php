@@ -10,19 +10,19 @@
 </head>
 <body>
     <nav class="flex items-center border-b-2 px-6 py-4 border-black-500 sticky top-0 bg-white overflow-hidden z-50">
-        <a href="../index.html"><img src="../images/bajinggo.png" alt="Logo" class="w-11"></a>
+        <a href="../index.php"><img src="../images/bajinggo.png" alt="Logo" class="w-11"></a>
         <p class="judul"> BJG-Times</p>
         <ul class="flex-1 text-center">
             <li class="inline-block px-5 list-none"><a href="#" class="no-underline text-black px-2">About</a></li>
-            <li class="inline-block px-5 list-none"><a href="../index.html" class="no-underline text-black px-2">News</a></li>
-            <li class="inline-block px-5 list-none"><a href="sport.html" class="no-underline text-black px-2">Sport</a></li>
-            <li class="inline-block px-5 list-none"><a href="politic.html" class="no-underline text-black px-2">Politic</a></li>
-            <li class="inline-block px-5 list-none"><a href="entertaiment.html" class="no-underline text-black px-2">Entertaiment</a></li>
-            <li class="inline-block px-5 list-none"><a href="bussines.html" class="no-underline text-black px-2">Bussines</a></li>
+            <li class="inline-block px-5 list-none"><a href="../index.php" class="no-underline text-black px-2">News</a></li>
+            <li class="inline-block px-5 list-none"><a href="sport.php" class="no-underline text-black px-2">Sport</a></li>
+            <li class="inline-block px-5 list-none"><a href="politic.php" class="no-underline text-black px-2">Politic</a></li>
+            <li class="inline-block px-5 list-none"><a href="entertaiment.php" class="no-underline text-black px-2">Entertaiment</a></li>
+            <li class="inline-block px-5 list-none"><a href="bussines.php" class="no-underline text-black px-2">Bussines</a></li>
             
         </ul>
         <div class="w-24 h-10 border-solid border-2 text-black border-black rounded-3xl flex justify-center items-center hover:bg-blue-500 hover:text-white duration-100">
-            <a href="../login.html">Login</a>
+            <a href="../login.php">Login</a>
         </div>
     </nav>
 <div class="konten">
