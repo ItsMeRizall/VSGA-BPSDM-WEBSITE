@@ -42,7 +42,7 @@
                 </div>
                 <div class="flex justify-between items-center ">
                     <h2 class="text-2xl font-semibold">News Update</h2>
-                    <a href="#" class="text-blue-500 hover:underline mt-4">Lihat Semua</a>
+                    <a href="viewall.html" class="text-blue-500 hover:underline mt-4">Lihat Semua</a>
                 </div>
                 <div id="cardNews" class="grid lg:grid-cols-3 sm:grid-cols-1 md:grid-cols-2 gap-4">
                     <?php

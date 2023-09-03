@@ -22,7 +22,6 @@ margin-right: 20px;
 .judul{
   font-size: 22px;
   padding-left: 15px;
-   
 }
 
 .gambar43{
@@ -63,23 +62,68 @@ margin-right: 20px;
     opacity: 1;
 }
 
-footer {
-  background-color: #333;
-  color: #fff;
-  padding: 5px;
-  text-align: center;
+.berita-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
-.social-links {
+.berita {
+  width: calc(30% - 20px); /* Lebar sedikit lebih kecil */
+  border: 1px solid #ccc;
+  margin: 10px;
+  padding: 20px;
+  position: relative;
+}
+
+.tanggal-berita {
+  color: #888;
+  font-size: 14px;
+}
+
+.judul-berita {
+  font-size: 18px;
+  font-weight: bold;
+  max-height: 3em; /* Maksimum tinggi judul berita (3 baris dengan line-height 1em) */
+  overflow: hidden;
+  white-space: normal; /* Mengizinkan pemutusan baris */
+  -webkit-line-clamp: 3; /* Batasi jumlah baris menjadi 3 */
+  -webkit-box-orient: vertical; /* Set tata letak konten menjadi vertikal */
+  display: -webkit-box; /* Mengaktifkan fitur tata letak berbasis kotak */
+  line-height: 1em;
+}
+
+.isi-berita {
   margin-top: 10px;
+  max-height: 4em; /* Maksimum tinggi isi berita (4 baris dengan line-height 1em) */
+  overflow: hidden;
+  white-space: normal; /* Mengizinkan pemutusan baris */
+  -webkit-line-clamp: 4; /* Batasi jumlah baris menjadi 4 */
+  -webkit-box-orient: vertical; /* Set tata letak konten menjadi vertikal */
+  display: -webkit-box; /* Mengaktifkan fitur tata letak berbasis kotak */
+  line-height: 1em; /* Jarak antarbaris */
 }
 
-.social-links a {
-  display: inline-block;
-  margin: 0 20px;
+
+.hiasan {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: #f0f0f0;
+  padding: 5px 10px;
+  border-radius: 0 0 0 5px;
 }
 
-.social-links img {
-  width: 40px;
-  height: 40px;
+.gambar-berita {
+  width: 100%;
+  max-height: 150px; /* Ukuran gambar yang disamakan */
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+/* CSS untuk tampilan daftar berita */
+#daftar-berita {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
 }
