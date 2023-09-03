@@ -10,7 +10,7 @@
 </head>
 <body>
     <nav class="flex items-center border-b-2 px-6 py-4 border-black-500 sticky top-0 bg-white overflow-hidden z-50">
-        <a href="../index.html"><img src="../images/bajinggo.png" alt="Logo" class="w-11"></a>
+        <a href="../index.php"><img src="../images/bajinggo.png" alt="Logo" class="w-11"></a>
         <p class="judul"> BJG-Times</p>
         <ul class="flex-1 text-center">
             <li class="inline-block px-5 list-none"><a href="about.php" class="no-underline text-black px-2">About</a></li>
@@ -56,7 +56,7 @@
                             echo '<h2 class="text-xl font-semibold mb-2">' .$result[$i]["news_title"] . '</h2>';
                             echo '<p class="text-gray-600 mb-4">' .$result[$i]["news_content"] . '</p>';
                             echo '<p class="text-sm text-gray-500">' .$result[$i]["news_update"] . '</p>';
-                            echo '<a class="text-blue-500 hover:underline mt-2 inline-block cursor-pointer">Lihat Selengkapnya</a>';
+                            echo '<a href="../news_details/details.php?id=' . $result[$i]['news_id'] . '" class="text-blue-500 hover:underline mt-2 inline-block cursor-pointer">Lihat Selengkapnya</a>'; 
                             echo '</div>';
                         }
                     }

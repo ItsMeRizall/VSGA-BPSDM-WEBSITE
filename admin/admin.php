@@ -18,7 +18,7 @@
 
         <div
             class="w-24 h-10 border-solid border-2 text-black border-black rounded-3xl flex justify-center items-center hover:bg-red-500 hover:text-white duration-100">
-            <a href="../index.html">Logout</a>
+            <a href="../index.php">Logout</a>
         </div>
     </nav>
 
