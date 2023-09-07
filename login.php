@@ -1,3 +1,7 @@
+<?php 
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,7 +19,7 @@
       </div>
     
       <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-        <form class="space-y-6" action="#" method="POST">
+        <form class="space-y-6" action="services/loginfunction.php" method="POST">
           <div>
             <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Username</label>
             <div class="mt-2 ">
@@ -34,13 +38,18 @@
               <input id="password" name="password" type="password" autocomplete="current-password" required class="block pl-3 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
             </div>
           </div>
-    
+          
           <div>
-            <a href="" id="btnLogin" class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
-                    Sign In
-            </a>
+            <button class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" type="submit">Sign In</button>
           </div>
         </form>
+
+        <?php
+        if(!empty($_SESSION["error_message"])){
+          echo '<div id="error-message" class="text-[#d9534f] block font-medium mt-2 text-center">'. $_SESSION["error_message"]. '</div>';
+          unset($_SESSION["error_message"]);
+        }
+        ?>
       </div>
   </div>
 </div>

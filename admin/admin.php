@@ -1,3 +1,31 @@
+<?php
+session_start();
+include '../services/koneksi.php';
+
+$dbHelper = new DBHelper("localhost", "root", "", "123_syahmi");
+
+$result = $dbHelper->getData("news", "*", "", "news_update DESC");
+
+if (empty($_SESSION["username"])) {
+    $_SESSION["error_message"] = "ANDA HARUS LOGIN TERLEBIH DAHULU";
+    header("location: ../login.php");
+}
+
+header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+header("Pragma: no-cache");
+
+if (isset($_POST["search"])) {
+    if (!empty($_POST["text"])) {
+        $data_search = $dbHelper->getData("news", "*", "news_title like '%" . $_POST["text"] . "%'");
+        $result = $data_search;
+    } else {
+        $result = $dbHelper->getData("news", "*", "", "news_update DESC");
+    }
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,22 +46,23 @@
 
         <div
             class="w-24 h-10 border-solid border-2 text-black border-black rounded-3xl flex justify-center items-center hover:bg-red-500 hover:text-white duration-100">
-            <a href="../index.php">Logout</a>
+            <a href="logout.php">Logout</a>
         </div>
     </nav>
 
     <section id="Dashboard" class="p-10">
-        <div class="container  flex justify-between">
-            <div class="flex items-center border-2 rounded-full p-2 w-2/5">
-                <input type="text" class="border-none outline-none flex-grow" placeholder="Search...">
-                <button class="bg-gray-300 hover:bg-gray-400 text-gray-600 rounded-full p-2">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
-                            d="M15 15l4-4m0 0l-4-4m4 4H5" />
-                    </svg>
-                </button>
-            </div>
+        <div class="container flex justify-between">
+                <form class="flex items-center border-2 rounded-full p-2 w-2/5" action="admin.php" method="post">
+                    <input type="text" name="text" class="border-none outline-none flex-grow" placeholder="Search...">
+                    <button name="search" value="search"
+                        class="bg-gray-300 hover:bg-gray-400 text-gray-600 rounded-full p-2">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
+                                d="M15 15l4-4m0 0l-4-4m4 4H5" />
+                        </svg>
+                    </button>
+                </form>
             <div class="self-end">
                 <button id="newItem"
                     class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-full flex items-center gap-1">
@@ -50,11 +79,6 @@
 
         <!-- LIST ITEM -->
         <?php
-        include '../services/koneksi.php';
-
-        $dbHelper = new DBHelper("localhost", "root", "", "123_syahmi");
-        
-        $result = $dbHelper->getData("news", "*", "", "news_update DESC");
 
         if (!empty($result)) {
             foreach ($result as $data) {
@@ -70,25 +94,23 @@
                 echo '</div>';
                 echo '</div>';
                 echo ' <div class="text-sm">';
-                // Inside the loop
                 echo '<a href="../services/edit_data.php?id=' . $data['news_id'] . '" class="font-semibold mx-5 text-indigo-600 hover:text-indigo-500">Edit</a>';
-        
                 echo '<a href="../services/delete_data.php?id=' . $data['news_id'] . '" class="font-semibold mx-5 text-indigo-600 hover:text-indigo-500">Delete</a>';
                 echo '</div>';
                 echo '</li>';
-                // <!-- Add more items here -->
                 echo '</ul>';
                 echo '</div>';
-            }        
+            }
         } else {
-            echo 'echo <tr><td colspan="4" class="text-center">Tidak ada kegiatan.</td></tr>';
+            echo '<tr><td colspan="4" class="text-center">Tidak ada kegiatan.</td></tr>';
         }
         ?>
 
 
     </section>
 
-    <div class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden" id="addPopup">
+    <div class="fixed flex inset-0 items-center justify-center bg-black bg-opacity-50 hidden" id="addPopup">
+        <!-- <div class="relative flex"><p class="absolute top-0 right-0 p-5 black rounded-bl-lg text-lg">X</p></div> -->
         <div class="w-4/6 h-auto bg-white rounded-lg overflow-hidden md:max-w-lg">
             <div class="">
                 <div class="w-full px-4 py-6 ">
@@ -132,8 +154,9 @@
                         </div>
 
                         <div class="mt-3 text-right">
+                            <button id="cancel-btn" style="border: 1px solid red; box-sizing: border-box;" class="ml-2 h-10 w-32 rounded text-black hover:border-black-700" type="button">Cancel</button>
                             <button type="submit"
-                                class="ml-2 h-10 w-32 bg-blue-600 rounded text-white hover:bg-blue-700">Create</button>
+                                class="ml-2 h-10 w-32 bg-blue-600 rounded text-white hover:bg-blue-700">Add Item</button>
                         </div>
                     </form>
 
@@ -144,18 +167,6 @@
             </div>
         </div>
     </div>
-
-    <!-- admin.php -->
-    <!-- ... your previous code ... -->
-
-    <script>
-        function deleteNews(id) {
-            if (confirm('Are you sure you want to delete this item?')) {
-                
-            }
-        }
-    </script>
-
 
 </body>
 

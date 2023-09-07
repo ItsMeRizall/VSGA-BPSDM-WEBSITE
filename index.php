@@ -30,7 +30,7 @@
         </ul>
         <div
             class="w-24 h-10 border-solid border-2 text-black border-black rounded-3xl flex justify-center items-center hover:bg-blue-500 hover:text-white duration-100">
-            <a href="./login.html">Login</a>
+            <a href="./login.php">Login</a>
         </div>
     </nav>
 

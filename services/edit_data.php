@@ -1,6 +1,12 @@
 <?php
 include 'koneksi.php';
 
+session_start();
+if(empty($_SESSION["username"])){
+    $_SESSION["error_message"] = "ANDA HARUS LOGIN TERLEBIH DAHULU";
+    header("location: ../login.php");
+}
+
 $dbHelper = new DBHelper("localhost", "root", "", "123_syahmi");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['id'])) {
@@ -54,9 +60,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['id'])) {
 <body>
     <section class="login">
         <div class="container grid place-items-center">
-
             <form action="edit_data.php" method="POST">
-                <input type="hidden" name="id" value="<?php echo $data['news_id']; ?>">F
+                <input type="hidden" name="id" value="<?php echo $data['news_id']; ?>">
                 <div class="mb-1">
                     <span class="text-sm">Title</span>
                     <input id="tittleName" value="<?php echo $data['news_title']; ?>" type="text" name='title' required

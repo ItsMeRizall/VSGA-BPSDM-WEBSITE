@@ -82,9 +82,4 @@ class DBHelper {
     
 }
 
-// $dbHelper = new DBHelper("localhost", "root", "", "114_moch_syaiful_rizal");
-
-// $coba = $dbHelper->getData("news");
-// echo json_encode($coba);
-
 ?>

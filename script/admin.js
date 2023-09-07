@@ -4,14 +4,17 @@ const clsItemBTN = document.getElementById('clsAddItem');
 const tittleTextinpt = document.getElementById('tittleName');
 const imageInput = document.getElementById('imageInput');
 const fotoNama = document.getElementById('foto_nama');
+const cancelBtn = document.getElementById('cancel-btn');
 
-addItemBTN.addEventListener('click', () => {
-    newItemPopUp.classList.remove('hidden');
-})
+cancelBtn.addEventListener('click', () => newItemPopUp.classList.add('hidden'));
 
-clsItemBTN.addEventListener('click', ()=> {
-    newItemPopUp.classList.add('hidden');
-});
+addItemBTN.addEventListener('click', () =>
+    newItemPopUp.classList.remove('hidden')
+);
+
+clsItemBTN.addEventListener('click', ()=> 
+    newItemPopUp.classList.add('hidden')
+);
 
 imageInput.addEventListener('change', function() {
     if (this.files && this.files.length > 0) {
